@@ -4,3 +4,7 @@
 [![Test Coverage](https://codeclimate.com/github/sockinit/sockinit/badges/coverage.svg)](https://codeclimate.com/github/sockinit/sockinit/coverage)
 [![Issue Count](https://codeclimate.com/github/sockinit/sockinit/badges/issue_count.svg)](https://codeclimate.com/github/sockinit/sockinit)
 [![Codecrystal](https://img.shields.io/badge/code-crystal-5CB3FF.svg)](http://codecrystal.herokuapp.com/crystalise/tu6619/sockinit/master)
+
+## Wireframe
+
+![wireframe](http://s22.postimg.org/908coqkfl/wireframe.png)
