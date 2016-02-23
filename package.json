@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/sockinit/sockinit#readme",
   "devDependencies": {
+    "env2": "^2.0.6",
     "istanbul": "^0.4.2",
     "nodemon": "^1.9.0",
     "shot": "^3.0.1",
