@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape tests/*"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/sockinit/sockinit#readme",
   "devDependencies": {
+    "istanbul": "^0.4.2",
     "nodemon": "^1.9.0",
     "shot": "^3.0.1",
     "tape": "^4.4.0"
