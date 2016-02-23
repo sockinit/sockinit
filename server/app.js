@@ -1,1 +1,8 @@
-//this is the entry point for the app, so it starts the server
+var server = require('./server.js');
+var router = require('./router.js');
+
+var s = server.initialise(router);
+
+module.exports = {
+    s: s
+};
