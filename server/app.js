@@ -2,11 +2,11 @@ var http = require('http');
 var fs = require('fs');
 var port = process.env.PORT || 3000;
 
-
-var server = http.createServer(handler).listen(port);
-var io = require("socket.io")(server);
+var server = http.createServer(handler);
+server.listen(port);
 console.log('server listening on: ' + port);
 
+var io = require("socket.io")(server);
 
 function handler (request, response){
     var url = request.url;
@@ -39,3 +39,4 @@ module.exports = {
     server: server,
     io: io
 };
+var chatDb = require("./chatdb.js");
