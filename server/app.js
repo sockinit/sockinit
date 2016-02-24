@@ -20,6 +20,16 @@ function handler (request, response){
                 response.end(file);
             }
         });
+    } else if (url === '/chat') {
+        response.writeHead(200, {'Content-Type':'text/html'});
+        fs.readFile(__dirname + '/../client/chat.html', function(err, file){
+            if(err){
+                console.log(err);
+                response.end();
+            } else {
+                response.end(file);
+            }
+        });
     } else if (url.indexOf(".") > -1) {
             var ext = url.split(".")[1];
             fs.readFile(__dirname + '/../client/' + url, function(err, file) {

@@ -26,6 +26,44 @@ function getDateTime(dateObj){
     return [date, time];
 }
 
-function addToDb(userName, img, message, date, time) {
-
+function addToDb(client, userName, img, message, date, time, callback) {
+    console.log(client);
+    var messageObj = {
+        userName : userName,
+        img : img,
+        message : message,
+        date : date,
+        time : time
+    };
+    client.rpush('chats', JSON.stringify(messageObj), function(err, reply) {
+        if(err){
+            console.log(err);
+        } else {
+            callback(reply);
+        }
+    });
 }
+
+function retrieveChats(client, callback){
+    console.log("klasdfkjsadf" ,  client);
+    client.LRANGE('chats', 0, -1, function(err, reply){
+        if(err){
+            console.log(err);
+        } else {
+            callback(reply);
+        }
+    });
+}
+
+module.exports = {
+    addToDb : addToDb,
+    retrieveChats: retrieveChats
+};
+
+// client.smembers('chats', function(err, reply){
+//     if(err) {
+//         console.log(err);
+//     } else {
+//         JSON.parse(reply);
+//     }
+// });
