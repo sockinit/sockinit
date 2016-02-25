@@ -37,7 +37,7 @@ function sendNameToBackEnd(name) {
                 console.log('in func user', userName);
 
                 var userLink = document.createElement('a');
-                userLink.href = "http://localhost:3000/chatting/" + userName;
+                userLink.href = "/chatting/" + userName;
                 userLink.id = 'link';
                 document.body.appendChild(userLink);
 
@@ -90,7 +90,7 @@ function reSendNameToBackEnd(name) {
                 console.log('in refunc user', userName);
 
                 var userLink = document.createElement('a');
-                userLink.href = "http://localhost:3000/chatting/" + userName;
+                userLink.href = "/chatting/" + userName;
                 userLink.id = 'link';
                 document.body.appendChild(userLink);
 
