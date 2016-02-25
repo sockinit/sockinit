@@ -18,8 +18,9 @@ document.getElementById('button').addEventListener('click', function(e){
     return false;
 });
 
-socket.on('connect', function() {
+socket.on('connected', function() {
   console.log('CONNECTED TO THE CLIENT - NOT TESTSS');
+
     var usrCo = document.createElement('li');
     usrCo.className = 'user';
     usrCo.innerHTML = userName + ' has joined the chat';
