@@ -22,11 +22,30 @@ socket.on('connect', function() {
     document.getElementById('messages').appendChild(usrCo);
 });
 
-socket.on('chat message', function(message){
+socket.on('chat message', function(messageObj){
     console.log('chat message received client side');
-    var msg = document.createElement('li');
-    msg.innerHTML = message;
-    document.getElementById('messages').appendChild(msg);
+    var chat = document.createElement('li');
+
+    var img = document.createElement('img');
+    img.setAttribut('src', messageObj.img);
+    chat.appendChild(img);
+
+    var userName = document.createElement('span');
+    userName.className = "user-name";
+    userName.innerHTML = messageObj.userName;
+    chat.appendChild(userName);
+
+    var time = document.createElement('span');
+    time.className = "time";
+    time.innerHTML = messageObj.time;
+    chat.appendChild(time);
+
+    var message = document.createElement('div');
+    message.className = "message";
+    message.innerHTML = messageObj.message;
+    chat.appendChild(message);
+
+    document.getElementById('messages').appendChild(chat);
 });
 socket.on('user disconnect', function(){
     var usrDis = document.createElement('li');
@@ -42,4 +61,3 @@ socket.on('user typing', function(){
     setTimeout(function() {usrTyp.style.display = 'none';}, 2000);
 
 });
-console.log("in chatting.js");
