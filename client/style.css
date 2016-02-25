@@ -1,34 +1,42 @@
 body {
-  background: #000 url(http://www.transparenttextures.com/patterns/escheresque-dark.png);
+    background: #000 url(http://www.transparenttextures.com/patterns/escheresque-dark.png);
 }
-
+#backimg {
+    background: #000 url(http://studio021.se/wp-content/uploads/2016/01/put-a-sock-in-it.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 header {
-  position: fixed;
-  height: 50px;
-  width: 100%;
+    position: fixed;
+    height: 50px;
+    width: 100%;
 }
-
+h1 {
+    padding: 15px 0 10px 0;
+    text-shadow: 0px 0px 3px black;
+    color: aquamarine;
+}
 h3 {
-  text-align: center;
-  padding: 15px 0 10px 0;
-  text-shadow: 0px 0px 3px black;
-  color: aquamarine;
+    text-align: center;
+    padding: 15px 0 10px 0;
+    text-shadow: 0px 0px 3px black;
+    color: aquamarine;
 }
 .header {
-  box-shadow: 0px 0px 25px 0px aquamarine;
-  background-color: aquamarine;
-  background-image: url("http://www.transparenttextures.com/patterns/escheresque.png");
+    box-shadow: 0px 0px 25px 0px aquamarine;
+    background-color: aquamarine;
+    background-image: url("http://www.transparenttextures.com/patterns/escheresque.png");
 }
-
 h1 {
-  padding: 25px 0 20px 0;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: pink;
-  text-shadow: 1px 1px 3px black;
+    padding: 25px 0 20px 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: pink;
+    text-shadow: 1px 1px 3px black;
 }
-
 #typing {
     display: none;
     bottom: 10px;
@@ -37,30 +45,28 @@ h1 {
     left: 10px;
     color: grey;
 }
-
 #messages {
-  margin-top: 115px;
+    margin-top: 115px;
 }
-
 .user {
-  text-align: center;
-  font-style: italic;
+    text-align: center;
+    font-style: italic;
 }
-
 .box-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  display: inline-block;
-  overflow: hidden;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
 }
-
 #newsockers {
     float: left;
+    margin: auto;
 }
-
 #returningsockers {
     float: right;
+    margin: auto;
 }
-
-img { width: 100%; }
+img {
+    width: 100%;
+}
