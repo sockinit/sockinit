@@ -29,10 +29,3 @@ tape('Function retrieveChats retrieves an array', function(t){
         t.end();
     });
 });
-
-tape('teardown',function(t){
-  server.close();
-  client.quit();
-  clientMock.quit();
-  t.end();
-});
