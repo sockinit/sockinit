@@ -53,4 +53,12 @@ h1 {
   overflow: hidden;
 }
 
+#newsockers {
+    float: left;
+}
+
+#returningsockers {
+    float: right;
+}
+
 img { width: 100%; }
