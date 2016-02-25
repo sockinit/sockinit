@@ -1,7 +1,7 @@
 
 var socket = io();
 var userInpt = document.getElementById('input');
-var userName = 'Barney Stinson';
+var userName = window.location.href.split('/')[4] + " ";
 var img = 'https://images-na.ssl-images-amazon.com/images/I/31RscUfLovL._UX250_.jpg';
 
 document.getElementById('button').addEventListener('click', function(e){
