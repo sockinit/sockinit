@@ -9,5 +9,12 @@ body {
     left: 10px;
     color: grey;  \
     \]]]]]]]
-    
+}
+
+#newsockers {
+    float: left;
+}
+
+#returningsockers {
+    float: right;
 }
