@@ -1,0 +1,7 @@
+body {
+    background-color: pink;
+}
+#typing {
+    display: none;
+    bottom: 10px;
+}
