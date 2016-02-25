@@ -47,7 +47,18 @@ tape('Should be able to broadcast messages', function(t){
   });
 });
 
+tape('should return the array of message objects on the client side', function(t) {
 
+  var chatHistoric = function (client) {
+    client.on('connected', function(array){
+      t.equal(true, array instanceof Array, 'socket returns an array');
+      client.disconnect();
+      t.end();
+    });
+  };
+  var client1 = io.connect(socketURL, options);
+  chatHistoric(client1);
+});
 
 tape('teardown',function(t){
   server.close();

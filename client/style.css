@@ -1,5 +1,5 @@
 body {
-    background-color: steelblue;
+  background: #000 url(http://www.transparenttextures.com/patterns/escheresque-dark.png);
 }
 
 header {
@@ -8,14 +8,16 @@ header {
   width: 100%;
 }
 
-h4 {
+h3 {
   text-align: center;
-  background-color: pink;
   padding: 15px 0 10px 0;
+  text-shadow: 0px 0px 3px black;
+  color: aquamarine;
 }
 .header {
-  box-shadow: 0px 0px 25px 0px black;
-  background-color: palevioletred;
+  box-shadow: 0px 0px 25px 0px aquamarine;
+  background-color: aquamarine;
+  background-image: url("http://www.transparenttextures.com/patterns/escheresque.png");
 }
 
 h1 {
