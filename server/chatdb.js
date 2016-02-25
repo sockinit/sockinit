@@ -1,4 +1,5 @@
 var io = require("./app.js").io;
+var client = require('./client.js');
 
 io.on('connection', function(socket){
     io.emit('connect');
@@ -6,15 +7,25 @@ io.on('connection', function(socket){
     socket.on('chat message', function(messageObj){
         console.log('chat message event received server side:  ' + messageObj);
         var dateTime = getDateTime(new Date());
-        addToDb(messageObj.userName, messageObj.img, messageObj.message, dateTime[0], dateTime[1]);
-        io.emit('chat message', messageObj);
+        messageObj = JSON.parse(messageObj);
+        var ammendedObj = {
+          userName : messageObj.userName,
+          img : messageObj.img,
+          message : messageObj.message,
+          date : dateTime[0],
+          time : dateTime[1]
+        };
+        ammendedObj = JSON.stringify(ammendedObj);
+        addToDb(client, ammendedObj, function(reply) {
+          console.log("message saved to db");
+        });
+        io.emit('chat message', ammendedObj);
     });
     socket.on('disconnect', function(){
         console.log('disconnect event fired!!');
         io.emit('user disconnect');
     });
     socket.on('user typing', function(){
-        console.log('user is typing');
         io.emit('user typing');
     });
 });
@@ -26,16 +37,9 @@ function getDateTime(dateObj){
     return [date, time];
 }
 
-function addToDb(client, userName, img, message, date, time, callback) {
-    console.log(client);
-    var messageObj = {
-        userName : userName,
-        img : img,
-        message : message,
-        date : date,
-        time : time
-    };
-    client.rpush('chats', JSON.stringify(messageObj), function(err, reply) {
+function addToDb(client, messageObj, callback) {
+    // console.log(client);
+    client.rpush('chats', messageObj, function(err, reply) {
         if(err){
             console.log(err);
         } else {
@@ -45,7 +49,7 @@ function addToDb(client, userName, img, message, date, time, callback) {
 }
 
 function retrieveChats(client, callback){
-    console.log("klasdfkjsadf" ,  client);
+    // console.log("klasdfkjsadf" ,  client);
     client.LRANGE('chats', 0, -1, function(err, reply){
         if(err){
             console.log(err);

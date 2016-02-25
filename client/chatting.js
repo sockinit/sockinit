@@ -24,10 +24,11 @@ socket.on('connect', function() {
 
 socket.on('chat message', function(messageObj){
     console.log('chat message received client side');
-    var chat = document.createElement('li');
+    messageObj = JSON.parse(messageObj);
 
+    var chat = document.createElement('li');
     var img = document.createElement('img');
-    img.setAttribut('src', messageObj.img);
+    img.setAttribute('src', messageObj.img);
     chat.appendChild(img);
 
     var userName = document.createElement('span');
