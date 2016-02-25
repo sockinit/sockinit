@@ -35,7 +35,7 @@ tape('Function fetchUserNames successfully fetches the "usernames" set', functio
     userdb.fetchUserNames(clientMock, function(reply){
         var expected = true;
         var actual = Array.isArray(reply);
-        console.log('array ------->', reply);
+        console.log('array ------>', reply);
         t.equal(actual, expected, 'fetchUserNames function returns an array');
         t.end();
     });
