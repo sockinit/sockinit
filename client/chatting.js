@@ -2,7 +2,14 @@
 var socket = io();
 var userInpt = document.getElementById('input');
 var userName = window.location.href.split('/')[4] + " ";
-var img = 'https://images-na.ssl-images-amazon.com/images/I/31RscUfLovL._UX250_.jpg';
+
+var images = [
+'http://www.fandomisinthedetails.com/uploads/1/9/2/0/19201953/9606121_orig.jpg?324',
+'http://piesnloduiognia.pl/wp-content/uploads/2015/05/Tyrion.jpg',
+'http://images.radiotimes.com/namedimage/David_Tennant__Twitter_is_like_being_stalked_by_committee.jpg?quality=85&mode=crop&width=620&height=374&404=tv&url=/uploads/images/original/25601.jpg',
+'http://www.the-big-bang-theory.fr/images/Sheldon-Cooper.jpg',
+'https://images-na.ssl-images-amazon.com/images/I/31RscUfLovL._UX250_.jpg'
+];
 
 function printChat(messageObj) {
 
@@ -21,7 +28,7 @@ function printChat(messageObj) {
 
   var userName = document.createElement('span');
   userName.className = "user-name";
-  userName.innerHTML = messageObj.userName;
+  userName.innerHTML = messageObj.userName + ' :';
   chat.appendChild(userName);
 
   var time = document.createElement('span');
@@ -43,7 +50,10 @@ document.getElementById('button').addEventListener('click', function(e){
     var messageObj = {};
     messageObj.message = userInpt.value;
     messageObj.userName = userName;
-    messageObj.img = img;
+    var index = Math.floor((Math.random() * 10) + 1);
+    if (index > 5) { index -= 5; }
+    console.log("INDEXXXXXXXXX", index);
+    messageObj.img = images[index];
     // add image to object
     messageObj = JSON.stringify(messageObj);
 
