@@ -45,12 +45,49 @@ function handler (request, response){
     // else if (url.indexOf("chatting") > -1) {
     //     response.writeHead(200, {'Content-Type':'text/html'});
     // }
+    else if (url === '/chatting/style.css') {
+        fs.readFile(__dirname + '/../client/style.css', function(err, file) {
+            if (err) {
+                console.log(err);
+                response.end();
+            } else {
+                console.log('url in css branch ------>',  url);
+                response.writeHead(200, {'Content-Type':'text/css'});
+                response.end(file);
+            }
+        });
+    }
+    else if (url === '/chatting/chatting.js') {
+        fs.readFile(__dirname + '/../client/chatting.js', function(err, file) {
+            if (err) {
+                console.log(err);
+                response.end();
+            } else {
+                console.log('url in css branch ------>',  url);
+                response.writeHead(200, {'Content-Type':'text/js'});
+                response.end(file);
+            }
+        });
+    }
+    else if (url.indexOf("chatting") > -1) {
+        fs.readFile(__dirname + '/../client/chatting.html', function(err, file) {
+            if (err) {
+                console.log(err);
+                response.end();
+            } else {
+                console.log('url in branch ------>',  url);
+                response.writeHead(200, {'Content-Type':'text/html'});
+                response.end(file);
+            }
+        });
+    }
     else if (url.indexOf(".") > -1) {
             var ext = url.split(".")[1];
             fs.readFile(__dirname + '/../client/' + url, function(err, file) {
                 if(err){
                     console.log(err);
                     response.end();
+
                 } else {
                     response.writeHead(200, {'Content-Type':'text/' + ext});
                     response.end(file);
