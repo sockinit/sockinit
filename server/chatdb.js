@@ -38,7 +38,6 @@ function getDateTime(dateObj){
 }
 
 function addToDb(client, messageObj, callback) {
-    // console.log(client);
     client.rpush('chats', messageObj, function(err, reply) {
         if(err){
             console.log(err);
@@ -49,7 +48,6 @@ function addToDb(client, messageObj, callback) {
 }
 
 function retrieveChats(client, callback){
-    // console.log("klasdfkjsadf" ,  client);
     client.LRANGE('chats', 0, -1, function(err, reply){
         if(err){
             console.log(err);
@@ -63,11 +61,3 @@ module.exports = {
     addToDb : addToDb,
     retrieveChats: retrieveChats
 };
-
-// client.smembers('chats', function(err, reply){
-//     if(err) {
-//         console.log(err);
-//     } else {
-//         JSON.parse(reply);
-//     }
-// });
