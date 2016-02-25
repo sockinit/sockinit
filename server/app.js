@@ -3,7 +3,9 @@ var fs = require('fs');
 var port = process.env.PORT || 3000;
 
 var server = http.createServer(handler);
+
 server.listen(port);
+
 console.log('server listening on: ' + port);
 
 var io = require("socket.io")(server);
@@ -20,9 +22,9 @@ function handler (request, response){
                 response.end(file);
             }
         });
-    } else if (url === '/chat') {
+    } else if (url === '/chatting') {
         response.writeHead(200, {'Content-Type':'text/html'});
-        fs.readFile(__dirname + '/../client/chat.html', function(err, file){
+        fs.readFile(__dirname + '/../client/chatting.html', function(err, file){
             if(err){
                 console.log(err);
                 response.end();
@@ -41,12 +43,12 @@ function handler (request, response){
                     response.end(file);
                 }
             });
-        }
     }
-
+}
 
 module.exports = {
     server: server,
     io: io
 };
+
 var chatDb = require("./chatdb.js");
