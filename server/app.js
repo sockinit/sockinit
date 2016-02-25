@@ -33,8 +33,25 @@ function handler (request, response){
         // callback to checkName function
         userdb.fetchUserNames(client, function(reply){
             var userAvailable = userdb.checkName(client, reply, name);
+            console.log('possible boolean ------>', userAvailable);
             if(!userAvailable) {
                 userdb.addUsertoUserSet(client, name, function(reply) {
+                    console.log('repply----------->',reply);
+                });
+            }
+            // console.log('userAvailable--------->', userAvailable.toString('utf8'));
+            response.end(userAvailable.toString('utf8'));
+        });
+    } else if (url.indexOf("existingname") > -1) {
+        // grab the username
+        var existingname = url.split('/')[2];
+        response.writeHead(200, {'Content-Type':'text/html'});
+        // callback to checkName function
+        userdb.fetchUserNames(client, function(reply){
+            var userAvailable = userdb.checkName(client, reply, existingname);
+            console.log('possible boolean ------>', userAvailable);
+            if(userAvailable) {
+                userdb.addUsertoUserSet(client, existingname, function(reply) {
                     console.log('repply----------->',reply);
                 });
             }
