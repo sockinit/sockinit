@@ -2,7 +2,7 @@
 var socket = io();
 var userInpt = document.getElementById('write');
 var userName = window.location.href.split('/')[4] + " ";
-var index = Math.floor((Math.random() * 5) + 1);
+var index = Math.floor((Math.random() * 6) + 1);
 if(userName.indexOf(' ') > -1) { userName.replace(' ', '&nbsp;'); }
 
 var images = [
@@ -10,7 +10,8 @@ var images = [
 'http://piesnloduiognia.pl/wp-content/uploads/2015/05/Tyrion.jpg',
 'https://pbs.twimg.com/profile_images/554373251674017793/832fBpWP.jpeg',
 'http://www.the-big-bang-theory.fr/images/Sheldon-Cooper.jpg',
-'https://images-na.ssl-images-amazon.com/images/I/31RscUfLovL._UX250_.jpg'
+'https://images-na.ssl-images-amazon.com/images/I/31RscUfLovL._UX250_.jpg',
+'http://s.plurielles.fr/mmdia/i/55/1/america-ferrera-en-ugly-betty-3561551xxmyk_2041.jpg?v=5'
 ];
 
 function scrollBottom() {
@@ -20,7 +21,6 @@ function scrollBottom() {
 function printChat(messageObj) {
 
   messageObj = JSON.parse(messageObj);
-
 
   var chat = document.createElement('li');
 
@@ -99,5 +99,4 @@ socket.on('user typing', function(){
     var usrTyp = document.getElementById('typing');
     usrTyp.style.display = 'block';
     setTimeout(function() {usrTyp.style.display = 'none';}, 2000);
-
 });
