@@ -1,4 +1,3 @@
-
 var socket = io();
 var userInpt = document.getElementById('write');
 var userName = window.location.href.split('/')[4] + " ";
@@ -14,7 +13,6 @@ var images = [
 function printChat(messageObj) {
 
   messageObj = JSON.parse(messageObj);
-
 
   var chat = document.createElement('li');
 
@@ -92,8 +90,12 @@ userInpt.addEventListener('input', function(){
     socket.emit('user typing');
 });
 socket.on('user typing', function(){
+
     var usrTyp = document.getElementById('typing');
     usrTyp.style.display = 'block';
-    setTimeout(function() {usrTyp.style.display = 'none';}, 2000);
+
+    setTimeout(function() {
+        usrTyp.style.display = 'none';
+    }, 2000);
 
 });

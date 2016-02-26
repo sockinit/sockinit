@@ -83,6 +83,10 @@ h1 {
     text-shadow: 0px 0px 3px black;
     color: aquamarine;
 }
+h2 {
+    color: aquamarine;
+    font-weight: light;
+}
 #typing {
     display: none;
     bottom: 50px;
