@@ -1,6 +1,6 @@
 
 var socket = io();
-var userInpt = document.getElementById('input');
+var userInpt = document.getElementById('write');
 var userName = window.location.href.split('/')[4] + " ";
 
 var images = [
@@ -45,7 +45,7 @@ function printChat(messageObj) {
 
 }
 
-document.getElementById('button').addEventListener('click', function(e){
+document.getElementById('send').addEventListener('click', function(e){
     e.preventDefault();
     var messageObj = {};
     messageObj.message = userInpt.value;

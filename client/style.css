@@ -11,14 +11,14 @@ form {
   width: 100%;
 }
 
-form input {
+#write {
   border: 0;
   padding: 10px;
   width: 90%;
   height: 45px;
 }
 
-form button {
+#send {
   width: 10%;
   background: aquamarine;
   border: none;
@@ -27,6 +27,9 @@ form button {
   text-transform: uppercase;
   outline: none;
   cursor: pointer;
+  box-shadow: 0px 0px 4px 0px #458871 inset;
+  min-width: 80px;
+  position: absolute;
 }
 
 #messages {
@@ -53,13 +56,7 @@ body {
     background: #000 url(http://www.transparenttextures.com/patterns/escheresque-dark.png);
     font-family: Arial;
 }
-#backimg {
-    background: #000 url(http://studio021.se/wp-content/uploads/2016/01/put-a-sock-in-it.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+
 header {
     position: fixed;
     height: 50px;
@@ -83,8 +80,6 @@ h1 {
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
-    color: pink;
-    text-shadow: 1px 1px 3px black;
     text-shadow: 0px 0px 3px black;
     color: aquamarine;
 }
@@ -113,18 +108,8 @@ h1 {
     overflow: hidden;
     margin: 5px 10px 5px 25px;
 }
-#newsockers {
-    float: left;
-    margin: auto;
-}
-#returningsockers {
-    float: right;
-    margin: auto;
-}
 
-img {
-    width: 100%;
-}
+img { width: 100%; }
 
 .user-name {
   color: paleturquoise;
@@ -139,7 +124,7 @@ img {
   padding: 20px 0 30px 20px;
   position: absolute;
   text-align: right;
-  width: 80%;
+  width: 75%;
   z-index: -1;
 }
 .message {
@@ -148,4 +133,51 @@ img {
   margin-left: 155px;
   margin-top: -60px;
   z-index: -1;
+}
+/*************** homme page **************/
+
+#backimg {
+    background: #000 url(http://studio021.se/wp-content/uploads/2016/01/put-a-sock-in-it.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#newsockers {
+    width: 50%;
+    margin: 85px auto 70px auto;
+}
+#returningsockers {
+    width: 50%;
+    margin: 0px auto 0px auto;
+}
+#input, #reinput {
+    width: 50%;
+    min-width: 200px;
+    height: 40px;
+    border: 3px dashed aquamarine;
+    margin: 10px auto 0 auto;
+    display: inherit;
+    background-color: rgba(255, 255, 255, 0.23);
+    outline: none;
+    color: lightgray;
+    font-size: 16px;
+    padding-left: 10px;
+    text-shadow: 1px 1px 1px black;
+}
+#button, #rebutton {
+  background-color: aquamarine;
+  height: 35px;
+  width: 150px;
+  border: none;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 30px auto 0 auto;
+  display: block;
+  box-shadow: 0px 0px 10px 0px #458871 inset;
+  color: #575757;
+}
+@media screen and (max-width: 550px) {
+  .home { font-size: 22px; }
+  #newsockers, #returningsockers { width: 75%; }
 }

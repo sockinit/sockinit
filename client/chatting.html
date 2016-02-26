@@ -5,21 +5,18 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-      <header>
-        <div class="header">
+    <header>
+      <div class="header">
         <h1>Sockeninit</h1>
-        <div class="users">
-          <ul>
-
-          </ul>
-        </div>
       </div>
-      </header>
+    </div>
+    </header>
 
     <ul id="messages"></ul>
     <p id='typing'>user is typing ...</p>
     <form id="form" action="">
-      <input id="input" autocomplete="off" /><button id='button'>Send</button>
+      <input id="write" autocomplete="off" />
+      <button id='send'>Send</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src='./chatting.js'></script>
