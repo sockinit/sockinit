@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "tape ./tests/*",
+    "test": "tape tests/*",
+    "start": "node server/app.js",
     "coverage" : "istanbul cover tape ./tests/*"
   },
   "repository": {
