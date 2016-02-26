@@ -148,11 +148,11 @@ img { width: 100%; }
     background-size: cover;
 }
 #newsockers {
-    width: 50%;
+    width: 100%;
     margin: 85px auto 70px auto;
 }
 #returningsockers {
-    width: 50%;
+    width: 100%;
     margin: 0px auto 0px auto;
 }
 #input, #reinput {
@@ -182,6 +182,9 @@ img { width: 100%; }
   color: #575757;
 }
 @media screen and (max-width: 550px) {
-  .home { font-size: 22px; }
-  #newsockers, #returningsockers { width: 75%; }
+  .home {
+            font-size: 1.5em;
+  }
+
+  #newsockers, #returningsockers { width: 90%; }
 }
