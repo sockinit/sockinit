@@ -2,14 +2,20 @@
 var socket = io();
 var userInpt = document.getElementById('write');
 var userName = window.location.href.split('/')[4] + " ";
+var index = Math.floor((Math.random() * 5) + 1);
+if(userName.indexOf(' ') > -1) { userName.replace(' ', '&nbsp;'); }
 
 var images = [
 'http://www.fandomisinthedetails.com/uploads/1/9/2/0/19201953/9606121_orig.jpg?324',
 'http://piesnloduiognia.pl/wp-content/uploads/2015/05/Tyrion.jpg',
-'http://images.radiotimes.com/namedimage/David_Tennant__Twitter_is_like_being_stalked_by_committee.jpg?quality=85&mode=crop&width=620&height=374&404=tv&url=/uploads/images/original/25601.jpg',
+'https://pbs.twimg.com/profile_images/554373251674017793/832fBpWP.jpeg',
 'http://www.the-big-bang-theory.fr/images/Sheldon-Cooper.jpg',
 'https://images-na.ssl-images-amazon.com/images/I/31RscUfLovL._UX250_.jpg'
 ];
+
+function scrollBottom() {
+  document.body.scrollTop = document.body.scrollHeight;
+}
 
 function printChat(messageObj) {
 
@@ -42,7 +48,7 @@ function printChat(messageObj) {
   chat.appendChild(message);
 
   document.getElementById('messages').appendChild(chat);
-
+  scrollBottom();
 }
 
 document.getElementById('send').addEventListener('click', function(e){
@@ -50,8 +56,6 @@ document.getElementById('send').addEventListener('click', function(e){
     var messageObj = {};
     messageObj.message = userInpt.value;
     messageObj.userName = userName;
-    var index = Math.floor((Math.random() * 10) + 1);
-    if (index > 5) { index -= 5; }
     console.log("INDEXXXXXXXXX", index);
     messageObj.img = images[index];
     // add image to object
