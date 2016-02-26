@@ -2,6 +2,8 @@ var redisMock = require('redis-mock');
 var userdb = require('../server/userdb.js');
 var tape = require('tape');
 var clientMock = redisMock.createClient();
+var client = require('../server/client.js');
+var server = require('../server/app.js').server;
 
 tape('Function addUsertoUserSet successfully adds user to "users set"', function(t){
         userdb.addUsertoUserSet(clientMock, 'tom', function(reply){
@@ -57,4 +59,11 @@ tape('Function checkName checks whether name is already in db', function(t){
         t.equal(actual, expected, 'checkName function returns false for name not in set');
         t.end();
     });
+});
+
+tape('teardown',function(t){
+  clientMock.quit();
+  client.quit();
+  server.close();
+  t.end();
 });
