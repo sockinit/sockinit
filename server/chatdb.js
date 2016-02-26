@@ -2,7 +2,9 @@ var io = require("./app.js").io;
 var client = require('./client.js');
 
 io.on('connection', function(socket){
-    io.emit('connect');
+  retrieveChats(client,function(reply){
+    io.emit('connected',reply);
+  });
     console.log('connection event fired: a user just connected');
     socket.on('chat message', function(messageObj){
         console.log('chat message event received server side:  ' + messageObj);

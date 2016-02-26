@@ -33,8 +33,25 @@ function handler (request, response){
         // callback to checkName function
         userdb.fetchUserNames(client, function(reply){
             var userAvailable = userdb.checkName(client, reply, name);
+            console.log('possible boolean ------>', userAvailable);
             if(!userAvailable) {
                 userdb.addUsertoUserSet(client, name, function(reply) {
+                    console.log('repply----------->',reply);
+                });
+            }
+            // console.log('userAvailable--------->', userAvailable.toString('utf8'));
+            response.end(userAvailable.toString('utf8'));
+        });
+    } else if (url.indexOf("existingname") > -1) {
+        // grab the username
+        var existingname = url.split('/')[2];
+        response.writeHead(200, {'Content-Type':'text/html'});
+        // callback to checkName function
+        userdb.fetchUserNames(client, function(reply){
+            var userAvailable = userdb.checkName(client, reply, existingname);
+            console.log('possible boolean ------>', userAvailable);
+            if(userAvailable) {
+                userdb.addUsertoUserSet(client, existingname, function(reply) {
                     console.log('repply----------->',reply);
                 });
             }
@@ -45,6 +62,42 @@ function handler (request, response){
     // else if (url.indexOf("chatting") > -1) {
     //     response.writeHead(200, {'Content-Type':'text/html'});
     // }
+    else if (url === '/chatting/style.css') {
+        fs.readFile(__dirname + '/../client/style.css', function(err, file) {
+            if (err) {
+                console.log(err);
+                response.end();
+            } else {
+                console.log('url in css branch ------>',  url);
+                response.writeHead(200, {'Content-Type':'text/css'});
+                response.end(file);
+            }
+        });
+    }
+    else if (url === '/chatting/chatting.js') {
+        fs.readFile(__dirname + '/../client/chatting.js', function(err, file) {
+            if (err) {
+                console.log(err);
+                response.end();
+            } else {
+                console.log('url in css branch ------>',  url);
+                response.writeHead(200, {'Content-Type':'text/js'});
+                response.end(file);
+            }
+        });
+    }
+    else if (url.indexOf("chatting") > -1) {
+        fs.readFile(__dirname + '/../client/chatting.html', function(err, file) {
+            if (err) {
+                console.log(err);
+                response.end();
+            } else {
+                console.log('url in branch ------>',  url);
+                response.writeHead(200, {'Content-Type':'text/html'});
+                response.end(file);
+            }
+        });
+    }
     else if (url.indexOf(".") > -1) {
             var ext = url.split(".")[1];
             fs.readFile(__dirname + '/../client/' + url, function(err, file) {
@@ -52,6 +105,7 @@ function handler (request, response){
                     console.log(err);
                     response.writeHead(404, {'Content-Type':'text/html'});
                     response.end();
+
                 } else {
                     response.writeHead(200, {'Content-Type':'text/' + ext});
                     response.end(file);

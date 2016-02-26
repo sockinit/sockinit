@@ -1,10 +1,9 @@
 var redisMock = require('redis-mock');
 var chatdb = require('../server/chatdb.js');
 var tape = require('tape');
+var server = require('../server/app.js').server;
 var clientMock = redisMock.createClient();
-
-var redis = require('redis');
-var client = redis.createClient();
+var client = require('../server/client.js');
 
 var testObj = {
   userName : 'Norbert',
@@ -25,9 +24,15 @@ tape('Function addTodb gets response from the database', function(t){
 
 tape('Function retrieveChats retrieves an array', function(t){
     chatdb.retrieveChats(client, function(reply){
-        // var expected = 'array';
         var actual =  reply instanceof Array;
         t.ok(actual, 'Array is returned');
         t.end();
     });
+});
+
+tape('teardown',function(t){
+  server.close();
+  client.quit();
+  clientMock.quit();
+  t.end();
 });
