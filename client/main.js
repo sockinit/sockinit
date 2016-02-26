@@ -1,7 +1,6 @@
 // global variable for chatting.js access
 var userName;
 
-
 document.getElementById("button").addEventListener('click', function(e) {
     e.preventDefault();
     var username = document.getElementById('input').value;
