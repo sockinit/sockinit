@@ -4,7 +4,11 @@ var userName;
 document.getElementById("button").addEventListener('click', function(e) {
     e.preventDefault();
     var username = document.getElementById('input').value;
-    if (username !== '') {
+    if (username.indexOf(' ') > -1){
+        var invalidUser = document.createElement('h2');
+        invalidUser.innerHTML = 'No spaces in your user name!';
+        document.body.appendChild(invalidUser);
+    } else if (username !== '') {
         console.log(username);
         document.getElementById('input').value = '';
         sendNameToBackEnd(username);

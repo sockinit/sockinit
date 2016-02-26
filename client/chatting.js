@@ -1,4 +1,3 @@
-
 var socket = io();
 var userInpt = document.getElementById('write');
 var userName = window.location.href.split('/')[4] + " ";
@@ -67,6 +66,7 @@ document.getElementById('send').addEventListener('click', function(e){
 });
 
 socket.on('connected', function(chatHistory) {
+
   var l = chatHistory.length;
   if(l > 15){
     chatHistory = chatHistory.splice(l-16, l-1);
@@ -86,17 +86,20 @@ socket.on('chat message', function(messageObj){
 
     printChat(messageObj);
 });
-socket.on('user disconnect', function(){
+socket.on('user disconnect', function(name){
+    name = name || 'A user';
     var usrDis = document.createElement('li');
     usrDis.className = 'user';
-    usrDis.innerHTML = 'A user just left the conversation!';
+    usrDis.innerHTML = name + ' just left the conversation!';
     document.getElementById('messages').appendChild(usrDis);
 });
 userInpt.addEventListener('input', function(){
     socket.emit('user typing');
 });
 socket.on('user typing', function(){
+
     var usrTyp = document.getElementById('typing');
     usrTyp.style.display = 'block';
     setTimeout(function() {usrTyp.style.display = 'none';}, 2000);
+
 });
