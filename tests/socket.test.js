@@ -60,8 +60,8 @@ tape('should return the array of message objects on the client side', function(t
   chatHistoric(client1);
 });
 
-tape('teardown',function(t){
-  server.close();
-  redisClient.quit();
-  t.end();
-});
+// tape('teardown',function(t){
+//   server.close();
+//   redisClient.quit();
+//   t.end();
+// });
