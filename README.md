@@ -19,6 +19,10 @@ Functionality to store usernames, passwords, number of visits and number of mess
 
 ![wireframe](http://s22.postimg.org/908coqkfl/wireframe.png)
 
+## This Is Our Flow
+
+![ourflow](assets/IMG_4842.JPG)
+
 ## References
 
 * Stackoverflow [discussion](http://stackoverflow.com/questions/6196647/want-to-store-in-redis-via-node-js) on using Redis with Node.
