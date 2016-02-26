@@ -24,6 +24,7 @@ document.getElementById("input").addEventListener('keyup', function(e) {
 });
 
 var sorryEl = document.createElement('h2');
+sorryEl.className = "sorry";
 
 function sendNameToBackEnd(name) {
     var request = new XMLHttpRequest();
@@ -42,6 +43,7 @@ function sendNameToBackEnd(name) {
                 document.body.appendChild(userLink);
 
                 var successEl = document.createElement('h2');
+                successEl.className = "success";
                 successEl.innerHTML = 'Success, get Socking!';
                 document.body.appendChild(successEl);
                 setTimeout(function() {
