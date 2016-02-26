@@ -50,18 +50,23 @@ function handler (request, response){
             fs.readFile(__dirname + '/../client/' + url, function(err, file) {
                 if(err){
                     console.log(err);
+                    response.writeHead(404, {'Content-Type':'text/html'});
                     response.end();
                 } else {
                     response.writeHead(200, {'Content-Type':'text/' + ext});
                     response.end(file);
                 }
             });
+    } else {
+        response.writeHead(404, {'Content-Type':'text/html'});
+        response.end();
     }
 }
 
 module.exports = {
     server: server,
-    io: io
+    io: io,
+    handler: handler
 };
 
 var chatDb = require("./chatdb.js");
