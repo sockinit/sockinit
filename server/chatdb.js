@@ -2,6 +2,7 @@ var io = require("./app.js").io;
 var client = require('./client.js');
 
 io.on('connection', function(socket){
+    console.log('socket---->', socket);
   retrieveChats(client,function(reply){
     io.sockets.in(socket.id).emit('connected', reply);
   });
