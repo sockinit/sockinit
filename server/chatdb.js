@@ -3,19 +3,25 @@ var client = require('./client.js');
 
 io.on('connection', function(socket){
   retrieveChats(client,function(reply){
-    io.emit('connected',reply);
+    io.sockets.in(socket.id).emit('connected', reply);
   });
     console.log('connection event fired: a user just connected');
     socket.on('chat message', function(messageObj){
+
+        socket.userName = JSON.parse(messageObj).userName;
+
         console.log('chat message event received server side:  ' + messageObj);
-        addToDb(client, ammendObj(messageObj), function(reply) {
+        var jsonObj = ammendObj(messageObj);
+        addToDb(client, jsonObj, function(reply) {
             console.log("message saved to db");
         });
-        io.emit('chat message', messageObj);
+        io.emit( 'chat message', jsonObj );
     });
     socket.on('disconnect', function(){
         console.log('disconnect event fired!!');
-        io.emit('user disconnect');
+
+        io.emit('user disconnect', socket.userName);
+
     });
     socket.on('user typing', function(){
         io.emit('user typing');

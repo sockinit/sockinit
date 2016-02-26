@@ -61,6 +61,7 @@ document.getElementById('send').addEventListener('click', function(e){
 });
 
 socket.on('connected', function(chatHistory) {
+
   var l = chatHistory.length;
   if(l > 15){
     chatHistory = chatHistory.splice(l-16, l-1);
@@ -80,10 +81,11 @@ socket.on('chat message', function(messageObj){
 
     printChat(messageObj);
 });
-socket.on('user disconnect', function(){
+socket.on('user disconnect', function(name){
+    name = name || 'A user';
     var usrDis = document.createElement('li');
     usrDis.className = 'user';
-    usrDis.innerHTML = 'A user just left the conversation!';
+    usrDis.innerHTML = name + ' just left the conversation!';
     document.getElementById('messages').appendChild(usrDis);
 });
 userInpt.addEventListener('input', function(){
